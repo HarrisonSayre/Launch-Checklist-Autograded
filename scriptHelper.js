@@ -31,14 +31,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  
  function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
-    //alert(document.getElementById("launchStatus").innerHTML);
-
-    //console.log("INSIDE");
-
-    //alert(document.getElementById("pilotStatus"));
-
-    //alert("INSIDE");
-
     let validPilot = validateInput(pilot); 
     let validCopilot = validateInput(copilot);
     let validFuelLevel = validateInput(fuelLevel);
@@ -47,16 +39,12 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     let fuelCheck = true;
     let cargoCheck = true;
 
-    //alert(validPilot+validCopilot+validFuelLevel+validCargoLevel);
-
     if(validPilot === "Empty" || validCopilot === "Empty" || validFuelLevel === "Empty" || validCargoLevel === "Empty"){
         alert("All fields are required!");
-        // stop the form submission
         event.preventDefault();
         return;
     }else if(validPilot === "Is a Number" || validCopilot === "Is a Number"){
         alert("The pilots' names should be Strings!");
-        // stop the form submission
         event.preventDefault();
         return;
     }else if(validFuelLevel === "Not a Number" || validCargoLevel === "Not a Number"){
@@ -65,11 +53,11 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
         return;
     }
 
-    const pilotElement = document.getElementById("pilotStatus");
-    const copilotElement = document.getElementById("copilotStatus");
+    document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
+    document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-    pilotElement.innerHTML = `Pilot ${pilot} is ready for launch`;
-    copilotElement.innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    //pilotElement.innerHTML = `Pilot ${pilot} is ready for launch`;
+    //copilotElement.innerHTML = 
     
     if(fuelLevel < 10000){
         noGo(document);
@@ -85,7 +73,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     }else{
         document.getElementById("cargoStatus").innerHTML =  "Cargo mass low enough for launch";
     }
-    
     if(fuelCheck && cargoCheck){
         document.getElementById('launchStatus').style.color ='green';
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch"; 
@@ -96,20 +83,13 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  function noGo(document){
     document.getElementById('faultyItems').style.visibility = 'visible';
     document.getElementById('launchStatus').style.color ='red';
-    //alert("BEFORE"+document.getElementById("launchStatus").innerHTML);
-    //alert(document.getElementById('launchStatus').innerHTML); 
-    const element = document.getElementById("launchStatus"); 
-    element.innerHTML = "Shuttle Not Ready for Launch";
-    //document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch"; 
-    //alert("AFTER"+document.getElementById("launchStatus").innerHTML);
+    document.getElementById("launchStatus").innerHTML = "Shuttle Not Ready for Launch";
  }
  
  async function myFetch() {
      let planetsReturned;
- 
      planetsReturned = await fetch().then( function(response) {
          });
- 
      return planetsReturned;
  }
  
