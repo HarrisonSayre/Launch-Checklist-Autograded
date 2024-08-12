@@ -32,8 +32,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  <img src="${imageUrl}"></img>
 
     `
-
-
  }
  
  function validateInput(testInput) {
@@ -75,9 +73,6 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     document.getElementById("pilotStatus").innerHTML = `Pilot ${pilot} is ready for launch`;
     document.getElementById("copilotStatus").innerHTML = `Co-pilot ${copilot} is ready for launch`;
 
-    //pilotElement.innerHTML = `Pilot ${pilot} is ready for launch`;
-    //copilotElement.innerHTML = 
-    
     if(fuelLevel < 10000){
         noGo(document);
         document.getElementById("fuelStatus").innerHTML = "Fuel level too low for launch";
@@ -108,20 +103,14 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
  async function myFetch() {
      let planetsReturned;
      planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
-            return response.json();
-            //response.json()//.then( function(json){
-                //console.log(response);
-            //});
+            return response.json();  
          });
-    //console.log(planetsReturned);
     return planetsReturned;
  }
  
  function pickPlanet(planets) {
     let index = Math.floor(Math.random()*planets.length);
-    //console.log(index);
     return (planets[index]);
-    //return "PLACEHOLDE";
  }
  
  module.exports.addDestinationInfo = addDestinationInfo;
