@@ -5,9 +5,10 @@ window.addEventListener("load", function() {
     let fuelLevelInput = document.querySelector("input[name=fuelLevel"); 
     let cargoMassInput = document.querySelector("input[name=cargoMass");
 
-    let shuttleList =  document.getElementById("faultyItems"); ///Placeholder???
+    let shuttleList =  document.getElementById("faultyItems");  
 
-    form.addEventListener("submit", function(event) {
+    form.addEventListener("submit", function(event)  {
+        event.preventDefault(); //Prevent refresh on submit?? 
         formSubmission(document, shuttleList, pilotNameInput.value, copilotNameInput.value, fuelLevelInput.value, cargoMassInput.value);
     });
 

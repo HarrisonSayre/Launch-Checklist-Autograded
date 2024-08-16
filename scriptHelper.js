@@ -86,6 +86,7 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
     if(fuelCheck && cargoCheck){
         document.getElementById('launchStatus').style.color ='green';
         document.getElementById("launchStatus").innerHTML = "Shuttle is Ready for Launch"; 
+        document.getElementById('faultyItems').style.visibility = 'visible';
         return;
     }return;
  }
